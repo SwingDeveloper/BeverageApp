@@ -15,7 +15,6 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         getData()
-        print("123")
         
     }
     
