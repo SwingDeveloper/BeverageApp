@@ -15,7 +15,8 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
 
         getData()
-        print(menuArray.first)
+        print("123")
+        
     }
     
     func getData() {
