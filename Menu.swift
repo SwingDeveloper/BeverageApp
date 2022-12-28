@@ -17,10 +17,12 @@ struct Menu: Decodable {
 
     struct Fields: Decodable {
         let name: String
-        let type: [String]
-        let image: String
+        let type: [drinkType]
         let price_m: Int
         let price_l: Int
         let description: String
        }
+    struct drinkType: Decodable {
+        let type: String
+    }
     }

@@ -14,12 +14,11 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        getData()
-        
+        fetchData()
     }
     
-    func getData() {
-        let urlString = "https://api.airtable.com/v0/appfieMsUwTxzERom/Menu?api_key=keykgXb1GRqbLNtpC"
+    func fetchData() {
+        let urlString = "https://api.airtable.com/v0/appfieMsUwTxzERom/Menu?sort[][field]=createdtime"
         if let url = URL(string: urlString) {
             var request = URLRequest(url: url)
             request.setValue("Bearer keykgXb1GRqbLNtpC", forHTTPHeaderField: "Authorization")
@@ -30,8 +29,10 @@ class MenuViewController: UIViewController {
                 if let data = data {
                     do {
                         let menu = try decoder.decode(Menu.self, from: data)
-                        self.menuArray = menu.records
-                        
+                        DispatchQueue.main.async {
+                            self.menuArray = menu.records
+                            print(self.menuArray)
+                        }
                     } catch  {
                         print(error)
                     }
